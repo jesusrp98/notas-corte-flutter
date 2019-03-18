@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:notas_corte_flutter/widgets/card_page.dart';
+import 'package:notas_corte_flutter/widgets/row_item.dart';
 
 import 'notasModel.dart';
 import 'widgets/head_card_page.dart';
@@ -25,6 +27,13 @@ class NotaPage extends StatelessWidget {
           subtitle5: Text(nota.duration.toString()),
           subtitle6: Text(nota.location),
         ),
+        CardPage(
+            title: 'INFORMATION',
+            body: Column(
+              children: <Widget>[
+                RowItem.textRow(context, title, description),
+              ],
+            )),
       ]),
     );
   }

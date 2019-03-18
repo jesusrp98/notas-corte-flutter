@@ -107,13 +107,11 @@ class HomePage extends StatelessWidget {
                           return ListCell(
                             title: nota.grade,
                             subtitle: nota.university,
-                            trailing: CircleAvatar(
-                              child: Text(nota.mark.toString()),
-                            ),
                             onTap: () => Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (_) => NotaPage(nota)),
+                                    builder: (_) => NotaPage(nota),
+                                  ),
                                 ),
                           );
                         },
