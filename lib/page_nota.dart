@@ -27,13 +27,6 @@ class NotaPage extends StatelessWidget {
           subtitle5: Text(nota.duration.toString()),
           subtitle6: Text(nota.location),
         ),
-        CardPage(
-            title: 'INFORMATION',
-            body: Column(
-              children: <Widget>[
-                RowItem.textRow(context, title, description),
-              ],
-            )),
       ]),
     );
   }

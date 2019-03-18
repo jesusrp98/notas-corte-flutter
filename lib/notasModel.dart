@@ -5,7 +5,7 @@ import 'package:http/http.dart' as http;
 import 'query.dart';
 
 class NotasModel extends QueryModel {
-  Map<String, int> cityJson;
+  Map<String, dynamic> cityJson;
   bool hasData = false;
   String city;
 
@@ -16,17 +16,19 @@ class NotasModel extends QueryModel {
     );
     cityJson = json.decode(response.body);
 
-    setLoading(false);
     hasData = true;
+    setLoading(false);
   }
 
   void fetchQuery(String grade) async {
     setLoading(true);
 
-    response = await http.get('localhost');
+    response = await http.get('http://localhost:8000/notas?region=cordoba');
     snapshot = json.decode(response.body);
 
     items.addAll(snapshot.map((nota) => Nota.fromJson(nota)).toList());
+
+    print(snapshot);
 
     setLoading(false);
   }
