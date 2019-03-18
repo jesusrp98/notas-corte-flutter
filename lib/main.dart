@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:scoped_model/scoped_model.dart';
 
+import 'notasModel.dart';
 import 'page_nota.dart';
 import 'widgets/list_cell.dart';
 import 'widgets/loading_indicator.dart';
@@ -33,10 +35,10 @@ class HomePage extends StatelessWidget {
                     itemBuilder: (context, index) {
                       final Nota nota = model.getItem(index);
                       return ListCell(
-                        title: nota.grado,
+                        title: nota.grade,
                         subtitle: nota.university,
                         trailing: CircleAvatar(
-                          child: Text(nota.mark),
+                          child: Text(nota.mark.toString()),
                         ),
                         onTap: () => Navigator.push(
                               context,
@@ -46,12 +48,12 @@ class HomePage extends StatelessWidget {
                     },
                     separatorBuilder: (context, index) => Separator.divider(),
                   ),
+            floatingActionButton: FloatingActionButton(
+              onPressed: () => model.loadData(),
+              tooltip: 'Fetch data',
+              child: Icon(Icons.search),
+            ),
           ),
-      floatingActionButton: FloatingActionButton(
-        // onPressed: model.,
-        tooltip: 'Fetch data',
-        child: Icon(Icons.search),
-      ),
     );
   }
 }

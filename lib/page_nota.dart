@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:notas_corte_flutter/widgets/head_card_page.dart';
+
+import 'notasModel.dart';
+import 'widgets/head_card_page.dart';
 
 class NotaPage extends StatelessWidget {
   final Nota nota;
@@ -9,14 +11,16 @@ class NotaPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: nota.name, centerTitle: true),
+      appBar: AppBar(title: Text(nota.grade), centerTitle: true),
       body: Column(children: <Widget>[
         HeadCardPage(
           image: CircleAvatar(
             child: Text("asd"),
           ),
-          title: nota.name,
-          subtitle1: nota.university,
+          title: nota.grade,
+          subtitle1: Text(nota.location),
+          subtitle2: Text(nota.location),
+          details: "Holo",
         ),
       ]),
     );
