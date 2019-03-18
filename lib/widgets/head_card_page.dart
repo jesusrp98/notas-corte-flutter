@@ -7,7 +7,7 @@ import 'separator.dart';
 class HeadCardPage extends StatelessWidget {
   final Widget image;
   final String title, details;
-  final Widget subtitle1, subtitle2;
+  final Widget subtitle1, subtitle2, subtitle3, subtitle4, subtitle5, subtitle6;
 
   HeadCardPage({
     this.image,
@@ -15,6 +15,10 @@ class HeadCardPage extends StatelessWidget {
     this.details,
     this.subtitle1,
     this.subtitle2,
+    this.subtitle3,
+    this.subtitle4,
+    this.subtitle5,
+    this.subtitle6,
   });
 
   @override
@@ -48,6 +52,14 @@ class HeadCardPage extends StatelessWidget {
                       subtitle1,
                       Separator.spacer(height: 7),
                       subtitle2,
+                      Separator.spacer(height: 7),
+                      subtitle3,
+                      Separator.spacer(height: 7),
+                      subtitle4,
+                      Separator.spacer(height: 7),
+                      subtitle5,
+                      Separator.spacer(height: 7),
+                      subtitle6,
                     ],
                   ),
                 ],
