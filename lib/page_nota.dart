@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:notas_corte_flutter/widgets/card_page.dart';
 import 'package:notas_corte_flutter/widgets/row_item.dart';
+import 'package:notas_corte_flutter/widgets/separator.dart';
 
 import 'notasModel.dart';
 import 'widgets/head_card_page.dart';
@@ -14,28 +15,25 @@ class NotaPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text(nota.grade), centerTitle: true),
-      body: Column(children: <Widget>[
+      body: ListView(children: <Widget>[
         HeadCardPage(
           image: CircleAvatar(
             child: Text(nota.location[0]),
           ),
           title: nota.grade,
         ),
-<<<<<<< HEAD
-=======
         CardPage(
-            title: 'INFORMATION',
-            body: Column(
-              children: <Widget>[
-                RowItem.textRow(context, "Universidad", nota.university),
-                RowItem.textRow(context, "Nota de Corte", nota.mark.toString()),
-                RowItem.textRow(context, "", nota.getPublic),
-                RowItem.textRow(context, "Precio por año", nota.price.toString()),
-                RowItem.textRow(context, "Duracion", nota.duration.toString()),
-                RowItem.textRow(context, "Localización", nota.location),
-              ],
-            )),
->>>>>>> 4f05232fb8d5d6f2b88af055b34d7a401cc26cf3
+          title: 'INFORMATION',
+          body: Column(
+            children: <Widget>[
+              RowItem.textRow(context, "Universidad", nota.university),
+              RowItem.textRow(context, "Nota de Corte", nota.mark.toString()),
+              RowItem.textRow(context, "Precio por año", nota.price.toString()),
+              RowItem.textRow(context, "Duracion", nota.duration.toString()),
+              RowItem.textRow(context, "Localización", nota.location),
+            ],
+          ),
+        )
       ]),
     );
   }
