@@ -20,12 +20,6 @@ class NotaPage extends StatelessWidget {
             child: Text(nota.location[0]),
           ),
           title: nota.grade,
-          subtitle1: Text(nota.university),
-          subtitle2: Text(nota.mark.toString()),
-          subtitle3: Text(nota.getPublic),
-          subtitle4: Text(nota.price.toString()),
-          subtitle5: Text(nota.duration.toString()),
-          subtitle6: Text(nota.location),
         ),
         CardPage(
             title: 'INFORMATION',
