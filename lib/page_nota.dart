@@ -20,13 +20,22 @@ class NotaPage extends StatelessWidget {
             child: Text(nota.location[0]),
           ),
           title: nota.grade,
-          subtitle1: Text(nota.university),
-          subtitle2: Text(nota.mark.toString()),
-          subtitle3: Text(nota.getPublic),
-          subtitle4: Text(nota.price.toString()),
-          subtitle5: Text(nota.duration.toString()),
-          subtitle6: Text(nota.location),
         ),
+<<<<<<< HEAD
+=======
+        CardPage(
+            title: 'INFORMATION',
+            body: Column(
+              children: <Widget>[
+                RowItem.textRow(context, "Universidad", nota.university),
+                RowItem.textRow(context, "Nota de Corte", nota.mark.toString()),
+                RowItem.textRow(context, "", nota.getPublic),
+                RowItem.textRow(context, "Precio por año", nota.price.toString()),
+                RowItem.textRow(context, "Duracion", nota.duration.toString()),
+                RowItem.textRow(context, "Localización", nota.location),
+              ],
+            )),
+>>>>>>> 4f05232fb8d5d6f2b88af055b34d7a401cc26cf3
       ]),
     );
   }

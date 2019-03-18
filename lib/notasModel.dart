@@ -24,6 +24,7 @@ class NotasModel extends QueryModel {
     setLoading(true);
 
     response = await http.get('http://localhost:8000/notas?region=cordoba');
+
     snapshot = json.decode(response.body);
 
     items.addAll(snapshot.map((nota) => Nota.fromJson(nota)).toList());
