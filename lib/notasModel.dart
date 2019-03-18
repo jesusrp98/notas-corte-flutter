@@ -61,4 +61,12 @@ class Nota {
       duration: json['duration'],
     );
   }
+
+  String get getPublic  {
+    if (public){
+      return "Presencial";
+    }else{
+      return "No presencial";
+    }
+  }
 }
