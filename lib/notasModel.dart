@@ -5,17 +5,28 @@ import 'package:http/http.dart' as http;
 import 'query.dart';
 
 class NotasModel extends QueryModel {
+  Map<String, int> cityJson;
+  bool hasData = false;
+  String city;
+
   @override
   Future loadData() async {
-    response = await http.get('');
+    response = await http.get(
+      'https://jsonblob.com/api/3580858c-4974-11e9-9547-4f3ea8b3b7f4',
+    );
+    cityJson = json.decode(response.body);
+
+    setLoading(false);
+    hasData = true;
+  }
+
+  void fetchQuery(String grade) async {
+    setLoading(true);
+
+    response = await http.get('url');
     snapshot = json.decode(response.body);
 
-    // For demo purposes
-    print(snapshot);
-
-    items.addAll(
-      snapshot.map((nota) => Nota.fromJson(nota)).toList(),
-    );
+    items.addAll(snapshot.map((nota) => Nota.fromJson(nota)).toList());
 
     setLoading(false);
   }

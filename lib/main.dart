@@ -54,30 +54,73 @@ class HomePage extends StatelessWidget {
             appBar: AppBar(
               title: Text('Notas de corte'),
             ),
-            body: model.isLoading
-                ? LoadingIndicator()
-                : ListView.separated(
-                    itemCount: model.getItemCount,
-                    itemBuilder: (context, index) {
-                      final Nota nota = model.getItem(index);
-                      return ListCell(
-                        title: nota.grade,
-                        subtitle: nota.university,
-                        trailing: CircleAvatar(
-                          child: Text(nota.mark.toString()),
+            body: Column(
+              children: <Widget>[
+                Row(
+                  children: <Widget>[
+                    TextField(
+                      autofocus: false,
+                      onSubmitted: (string) =>
+                          string.isNotEmpty ? model.fetchQuery(string) : null,
+                      decoration: InputDecoration(
+                        hintText: 'Search recipes or cocktails',
+                        labelStyle: TextStyle(
+                          color: Theme.of(context).textTheme.subhead.color,
                         ),
-                        onTap: () => Navigator.push(
-                              context,
-                              MaterialPageRoute(builder: (_) => NotaPage(nota)),
+                        contentPadding: const EdgeInsets.symmetric(
+                          vertical: 10,
+                          horizontal: 16,
+                        ),
+                        enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Theme.of(context).textTheme.caption.color,
+                          ),
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Theme.of(context).accentColor,
+                          ),
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                      ),
+                    ),
+                    model.hasData
+                        ? DropdownButton<String>(
+                            items: model.cityJson.keys
+                                .map((value) => DropdownMenuItem<String>(
+                                      value: value,
+                                      child: Text(value),
+                                    ))
+                                .toList(),
+                            onChanged: (value) => model.city = value,
+                          )
+                        : Separator.none(),
+                  ],
+                ),
+                model.isLoading
+                    ? LoadingIndicator()
+                    : ListView.separated(
+                        itemCount: model.getItemCount,
+                        itemBuilder: (context, index) {
+                          final Nota nota = model.getItem(index);
+                          return ListCell(
+                            title: nota.grade,
+                            subtitle: nota.university,
+                            trailing: CircleAvatar(
+                              child: Text(nota.mark.toString()),
                             ),
-                      );
-                    },
-                    separatorBuilder: (context, index) => Separator.divider(),
-                  ),
-            floatingActionButton: FloatingActionButton(
-              onPressed: () => model.loadData(),
-              tooltip: 'Fetch data',
-              child: Icon(Icons.search),
+                            onTap: () => Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (_) => NotaPage(nota)),
+                                ),
+                          );
+                        },
+                        separatorBuilder: (context, index) =>
+                            Separator.divider(),
+                      ),
+              ],
             ),
           ),
     );
