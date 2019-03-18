@@ -1,12 +1,13 @@
 import 'dart:convert';
+
 import 'package:http/http.dart' as http;
-import 'package:notas_corte_flutter/Url.dart';
+
 import 'query.dart';
 
 class NotasModel extends QueryModel {
   @override
   Future loadData() async {
-    response = await http.get(Url.notas);
+    response = await http.get('');
     snapshot = json.decode(response.body);
 
     // For demo purposes
@@ -26,9 +27,15 @@ class Nota {
   final double mark, price;
   final int duration;
 
-
   Nota({
-    this.grade, this.university, this.location, this.web, this.public, this.mark, this.price, this.duration,
+    this.grade,
+    this.university,
+    this.location,
+    this.web,
+    this.public,
+    this.mark,
+    this.price,
+    this.duration,
   });
 
   factory Nota.fromJson(Map<String, dynamic> json) {

@@ -14,7 +14,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Notas de corte',
-      theme: ThemeData(primaryColor: Colors.purple),
+      theme: ThemeData(
+        primaryColor: Colors.purple,
+        accentColor: Colors.purpleAccent,
+      ),
       home: HomeScreen(),
     );
   }
@@ -26,7 +29,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  NotasModel model =NotasModel();
+  NotasModel model = NotasModel();
 
   @override
   initState() {
