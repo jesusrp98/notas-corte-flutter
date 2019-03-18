@@ -15,7 +15,30 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Notas de corte',
       theme: ThemeData(primaryColor: Colors.purple),
-      home: HomePage(),
+      home: HomeScreen(),
+    );
+  }
+}
+
+class HomeScreen extends StatefulWidget {
+  @override
+  _HomeScreenState createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  NotasModel model =NotasModel();
+
+  @override
+  initState() {
+    super.initState();
+    model.loadData();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return ScopedModel(
+      model: model,
+      child: HomePage(),
     );
   }
 }
