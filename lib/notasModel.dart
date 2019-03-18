@@ -23,7 +23,7 @@ class NotasModel extends QueryModel {
   void fetchQuery(String grade) async {
     setLoading(true);
 
-    response = await http.get('localhost');
+    response = await http.get();
     snapshot = json.decode(response.body);
 
     items.addAll(snapshot.map((nota) => Nota.fromJson(nota)).toList());

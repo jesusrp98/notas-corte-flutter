@@ -31,7 +31,12 @@ class NotaPage extends StatelessWidget {
             title: 'INFORMATION',
             body: Column(
               children: <Widget>[
-                RowItem.textRow(context, title, description),
+                RowItem.textRow(context, "Universidad", nota.university),
+                RowItem.textRow(context, "Nota de Corte", nota.mark.toString()),
+                RowItem.textRow(context, "", nota.getPublic),
+                RowItem.textRow(context, "Precio por año", nota.price.toString()),
+                RowItem.textRow(context, "Duracion", nota.duration.toString()),
+                RowItem.textRow(context, "Localización", nota.location),
               ],
             )),
       ]),
